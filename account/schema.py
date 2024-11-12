@@ -8,17 +8,24 @@ class DesignationType(DjangoObjectType):
         model = DesignationModel
         fields = "__all__"
 
-class DesiognationQuery(graphene.ObjectType):
-    all_designations = graphene.List(DesignationType)
-
-    def resolve_all_designations(self, info):
-        return DesignationModel.objects.all()
-
-designation_schema = graphene.Schema(query=DesiognationQuery)
 
 class EmployeeType(DjangoObjectType):
     class Meta:
         model = EmployeeModel
         fields = "__all__"
+
+
+class Query(graphene.ObjectType):
+    all_designations = graphene.List(DesignationType)
+    all_employees = graphene.List(EmployeeType)
+
+    def resolve_all_designations(self, info):
+        return DesignationModel.objects.all()
+
+    def resolve_all_employees(self, info):
+        return EmployeeModel.objects.all()
+
+schema = graphene.Schema(query=Query)
+
 
 

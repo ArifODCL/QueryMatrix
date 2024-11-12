@@ -122,7 +122,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+#.env  # Just for Review purpose I am pushing this to git :(
 .venv
 env/
 venv/
@@ -163,3 +163,10 @@ cython_debug/
 
 **/*/migrations/
 !**/*/migrations/__init__.py
+
+.vscode
+.terraform
+*.tfstate
+*.tfstate.backup
+*.lock.*
+tfplan
