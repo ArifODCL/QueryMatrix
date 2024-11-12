@@ -18,6 +18,9 @@ resource "docker_network" "matrix_network" {
 
 }
 
+resource "docker_volume" "psql_volume" {
+  name = "pgqldata"
+}
 
 resource "docker_image" "postgres_image" {
   name = "postgres:16.0-alpine"
@@ -27,6 +30,8 @@ resource "docker_container" "postgres_container" {
   name  = "graphql_postgres"
   image = docker_image.postgres_image.name
   
+  restart = "unless-stopped"
+
   env = [
     "POSTGRES_USER=${var.POSTGRES_USER}",
     "POSTGRES_DB=${var.POSTGRES_DB}",
@@ -36,6 +41,11 @@ resource "docker_container" "postgres_container" {
   ports {
     internal = 5432
     external = 5434
+  }
+
+  volumes {
+    volume_name    = docker_volume.psql_volume.name
+    container_path = "/var/lib/postgresql/data"
   }
 
   networks_advanced {
