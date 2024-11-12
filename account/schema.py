@@ -16,7 +16,19 @@ class Query(
 ):
     pass
 
-schema = graphene.Schema(query=Query)
+
+
+
+class Mutation(graphene.ObjectType):
+    create_designation = CreateDesignation.Field()
+    update_designation = UpdateDesignation.Field()
+    delete_designation = DeleteDesignation.Field()
+
+
+
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 
 
