@@ -2,7 +2,7 @@ import graphene
 from django.db.models import Q
 from account.models import *
 from account.types import *
-from account.pagination import *
+from query_matrix.pagination import *
 
 
 class DesignationQuery(graphene.ObjectType):
