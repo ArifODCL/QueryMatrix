@@ -2,6 +2,9 @@
 GraphQL based Django Project with PostgreSQL database
 
 
+# POSTMAN Collection
+
+[POSTMAN](https://www.postman.com/arifodcl/workspace/graphql/collection/6732e26a2dc3cffa94610e2b?action=share&creator=37788288)
 
 ### Request Body
 ```
