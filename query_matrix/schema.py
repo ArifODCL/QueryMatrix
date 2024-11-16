@@ -4,13 +4,14 @@ from inventory.query import *
 
 
 class Query(
-    DesignationQuery, 
-    EmployeeQuery,
+    # DesignationQuery, 
+    # EmployeeQuery,
 
     # inventory
     ProductCategoryQuery,
     SupplierQuery,
     ProductQuery,
+    WarehouseQuery,
 
 
 
@@ -24,9 +25,9 @@ class Query(
 
 
 class Mutation(graphene.ObjectType):
-    create_designation = CreateDesignation.Field()
-    update_designation = UpdateDesignation.Field()
-    delete_designation = DeleteDesignation.Field()
+    # create_designation = CreateDesignation.Field()
+    # update_designation = UpdateDesignation.Field()
+    # delete_designation = DeleteDesignation.Field()
 
     # inventory
     create_product_category = CreateProductCategoryMutation.Field()
@@ -40,6 +41,11 @@ class Mutation(graphene.ObjectType):
     create_product = CreateProductMutation.Field()
     update_product = UpdateProductMutation.Field()
     delete_product = DeleteProductMutation.Field()
+
+
+    create_warehouse = CreateWarehouseMutation.Field()
+    update_warehouse = UpdateWarehouseMutation.Field()
+    delete_warehouse = DeleteWarehouseMutation.Field()
 
 
 

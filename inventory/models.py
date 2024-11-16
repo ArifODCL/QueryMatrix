@@ -35,7 +35,6 @@ class ProductModel(models.Model):
     supplier = models.ForeignKey(SupplierModel, on_delete=models.SET_NULL, null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     unit_price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.FileField(upload_to="product_images/", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -45,6 +44,19 @@ class ProductModel(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+
+
+# class ProductImageModel(models.Model):
+#     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, related_name="product_images")
+#     image = models.ImageField(upload_to="product_images/")
+#     is_primary = models.BooleanField(default=False)
+
+#     def __str__(self):
+#         return f"id: {self.id} - product: {self.product.name} - is_primary: {self.is_primary}"
+
+#     class Meta:
+#         verbose_name = "Product Image"
+#         verbose_name_plural = "Product Images"
 
 
 class WarehouseModel(models.Model):

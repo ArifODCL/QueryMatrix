@@ -5,6 +5,8 @@ from inventory.types import *
 from query_matrix.pagination import *
 from django.core.exceptions import ValidationError
 from graphql import GraphQLError
+from inventory.serializers import ProductSerializer
+
 
 class ProductQuery(graphene.ObjectType):
     all_products = graphene.Field(
@@ -66,12 +68,20 @@ class CreateProductMutation(graphene.Mutation):
 
     @classmethod
     def mutate(cls, root, info, input):
-        product = ProductModel(**input)
-        try:
-            product.full_clean()
-            product.save()
-        except ValidationError as e:
-            raise GraphQLError(f"{e.message_dict}")
+        product_data = input.__dict__
+
+        product_serializer = ProductSerializer(data=product_data)
+
+        if not product_serializer.is_valid():
+            raise GraphQLError(f"{product_serializer.errors}")
+        
+        product = product_serializer.save()
+
+        # try:
+        #     product.full_clean()
+        #     product.save()
+        # except ValidationError as e:
+        #     raise GraphQLError(f"{e.message_dict}")
         
         return CreateProductMutation(product=product)
     

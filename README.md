@@ -74,3 +74,14 @@ query AllDesignations {
 	}
 }
 ```
+
+
+
+
+### Ignore
+```
+raise Exception({
+    field: [str(error) for error in errors]
+    for field, errors in serializer.errors.items()
+})
+```
