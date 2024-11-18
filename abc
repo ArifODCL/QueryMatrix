@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.5.0
+django: version: 5.1.3, settings: query_matrix.settings (from ini)
+rootdir: /mnt/Workspace/GraphQL/query_matrix
+configfile: pytest.ini
+plugins: cov-6.0.0, django-4.9.0, mock-3.14.0, xdist-3.6.1, pythonpath-0.7.3, asyncio-0.24.0
+asyncio: mode=Mode.STRICT, default_loop_scope=function
+collected 2 items
+
+inventory/tests/test_models/product_category_tests.py ..                 [100%]
+
+---------- coverage: platform linux, python 3.12.3-final-0 -----------
+Name                                                    Stmts   Miss  Cover
+---------------------------------------------------------------------------
+inventory/tests/test_models/conftest.py                     9      0   100%
+inventory/tests/test_models/product_category_tests.py      22      0   100%
+---------------------------------------------------------------------------
+TOTAL                                                      31      0   100%
+
+
+============================== 2 passed in 1.19s ===============================
